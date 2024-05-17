@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://b2tdi3y2cb6db"]
+
+[ext_resource type="PackedScene" uid="uid://c5ssqha0uxvg1" path="res://Objects/power_up.tscn" id="1_5wxsr"]
+[ext_resource type="Texture2D" uid="uid://khy06ps8avud" path="res://Graphics/tilemap.png" id="2_jxjwg"]
+[ext_resource type="Script" path="res://Objects/HealthPowerUp.gd" id="3_vsvmf"]
+
+[node name="HealthPowerUp" instance=ExtResource("1_5wxsr")]
+power_up_duration = 0.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="5"]
+position = Vector2(-15, -15)
+scale = Vector2(1.52631, 1.61111)
+texture = ExtResource("2_jxjwg")
+centered = false
+offset = Vector2(-0.5, 0)
+region_enabled = true
+region_rect = Rect2(75, 38, 19, 18)
+script = ExtResource("3_vsvmf")

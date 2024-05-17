@@ -1,0 +1,58 @@
+[gd_scene load_steps=4 format=3 uid="uid://c5ssqha0uxvg1"]
+
+[ext_resource type="Script" path="res://Objects/PowerUp.gd" id="1_b1vlf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_81ih0"]
+bg_color = Color(1, 1, 1, 0.835294)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xp88i"]
+size = Vector2(23, 23)
+
+[node name="PowerUp" type="Area2D"]
+z_index = 1
+position = Vector2(459, 351)
+collision_layer = 16
+collision_mask = 4
+script = ExtResource("1_b1vlf")
+blink_color = Color(1, 1, 1, 0.313726)
+delete_dur = 10.0
+blink_start_dur = 7.0
+blink_amount = 9
+metadata/_edit_group_ = true
+
+[node name="BlinkingTimer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+
+[node name="DeleteTimer" type="Timer" parent="."]
+wait_time = 6.0
+one_shot = true
+
+[node name="ChangeBlinkBoolTimer" type="Timer" parent="."]
+
+[node name="Background" type="Panel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -13.5
+offset_top = -13.5
+offset_right = 13.5
+offset_bottom = 13.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_81ih0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_xp88i")
+
+[connection signal="timeout" from="BlinkingTimer" to="." method="_on_blinking_timer_timeout"]
+[connection signal="timeout" from="DeleteTimer" to="." method="_on_delete_timer_timeout"]
+[connection signal="timeout" from="ChangeBlinkBoolTimer" to="." method="_on_change_blink_bool_timer_timeout"]

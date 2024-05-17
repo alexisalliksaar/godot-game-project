@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://dw2n7gu1pxqyq"]
+
+[ext_resource type="Texture2D" uid="uid://khy06ps8avud" path="res://Graphics/tilemap.png" id="1_ncqd8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vcsch"]
+atlas = ExtResource("1_ncqd8")
+region = Rect2(75, 38, 19, 18)
+
+[node name="HeartUI" type="TextureRect"]
+z_index = 1
+custom_minimum_size = Vector2(54, 54)
+texture = SubResource("AtlasTexture_vcsch")

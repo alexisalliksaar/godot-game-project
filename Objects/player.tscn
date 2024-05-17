@@ -1,0 +1,94 @@
+[gd_scene load_steps=9 format=3 uid="uid://u8yh0288s4pc"]
+
+[ext_resource type="Texture2D" uid="uid://c5ndxjb266i8b" path="res://Graphics/godotProj2.png" id="1_82yj8"]
+[ext_resource type="Script" path="res://Objects/player.gd" id="1_py5lr"]
+[ext_resource type="Texture2D" uid="uid://bji6dt1ofu1j1" path="res://Graphics/godotProj1.png" id="2_q6pb5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g7amp"]
+atlas = ExtResource("1_82yj8")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bccn3"]
+atlas = ExtResource("2_q6pb5")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dswkf"]
+atlas = ExtResource("1_82yj8")
+region = Rect2(25, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f2u6d"]
+atlas = ExtResource("2_q6pb5")
+region = Rect2(25, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ljt8u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g7amp")
+}],
+"loop": true,
+"name": &"Idle_back",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bccn3")
+}],
+"loop": true,
+"name": &"Idle_front",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g7amp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dswkf")
+}],
+"loop": true,
+"name": &"Walk_back",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bccn3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f2u6d")
+}],
+"loop": true,
+"name": &"Walk_front",
+"speed": 7.0
+}]
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(567, 351)
+scale = Vector2(2, 2)
+collision_layer = 0
+collision_mask = 17
+script = ExtResource("1_py5lr")
+proj_delay = 0.35
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(4.5, 12, -4.5, 12, -10, 4, -10, -7, -6, -11, 6, -11, 10, -7, 10, 4)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ljt8u")
+animation = &"Walk_front"
+frame_progress = 0.226539
+
+[node name="SignalSpawner" type="Marker2D" parent="."]
+position = Vector2(0.5, -6.5)
+gizmo_extents = 5.5
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 18
+monitorable = false
+
+[node name="CollisionShape2D2" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(4.5, 12, -4.5, 12, -10, 4, -10, -7, -6, -11, 6, -11, 10, -7, 10, 4)
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://i4wwcw50j5q0"]
+
+[ext_resource type="Script" path="res://Objects/enemy.gd" id="1_jiaxu"]
+[ext_resource type="Texture2D" uid="uid://bji6dt1ofu1j1" path="res://Graphics/godotProj1.png" id="2_vn28a"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uwm74"]
+atlas = ExtResource("2_vn28a")
+region = Rect2(75, 50, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_clbis"]
+atlas = ExtResource("2_vn28a")
+region = Rect2(100, 50, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2i0xj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uwm74")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_clbis")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 10.0
+}]
+
+[node name="FastEnemy" type="CharacterBody2D"]
+z_index = 5
+scale = Vector2(1.5, 1.5)
+collision_layer = 2
+collision_mask = 15
+script = ExtResource("1_jiaxu")
+health = 1.0
+movement_speed = 130.0
+path_update_frame_count = 15
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_2i0xj")
+animation = &"Walk"
+autoplay = "Walk"
+frame = 1
+frame_progress = 0.408966
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(10, 9, -10, 9, -10, -8, 10, -8)
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 5.0
+path_postprocessing = 1
+debug_use_custom = true
+debug_path_custom_color = Color(0, 1, 1, 1)

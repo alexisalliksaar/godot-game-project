@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://bo0fme3j8sevp"]
+
+[ext_resource type="PackedScene" uid="uid://c5ssqha0uxvg1" path="res://Objects/power_up.tscn" id="1_o6u1q"]
+[ext_resource type="Script" path="res://Objects/ShootSpeedPowerUp.gd" id="2_kmqoi"]
+[ext_resource type="Texture2D" uid="uid://b00ie3kyydg58" path="res://Graphics/signal.png" id="3_fnukp"]
+
+[node name="ShootSpeedPowerUp" instance=ExtResource("1_o6u1q")]
+position = Vector2(0, 0)
+power_up_duration = 7.0
+
+[node name="Sprites" type="Node2D" parent="." index="5"]
+script = ExtResource("2_kmqoi")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprites" index="0"]
+z_index = 1
+position = Vector2(-9, 0)
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_fnukp")
+region_enabled = true
+region_rect = Rect2(3, 2, 18, 12)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Sprites" index="1"]
+z_index = 1
+position = Vector2(-0.5, 0)
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_fnukp")
+region_enabled = true
+region_rect = Rect2(3, 2, 18, 12)
+
+[node name="Sprite2D3" type="Sprite2D" parent="Sprites" index="2"]
+z_index = 1
+position = Vector2(8, 0)
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_fnukp")
+region_enabled = true
+region_rect = Rect2(3, 2, 18, 12)

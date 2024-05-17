@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="LevelEnemyData" load_steps=2 format=3 uid="uid://cwkapuoih1u5h"]
+
+[ext_resource type="Script" path="res://Scripts/WaveEnemyData.gd" id="1_7tpd6"]
+
+[resource]
+script = ExtResource("1_7tpd6")
+enemy = 0
+enemy_count = 40
+group_index = 0
+time_start_perc = 0.0
+time_end_perc = 1.0

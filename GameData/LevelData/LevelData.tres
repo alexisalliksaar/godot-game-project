@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://brc452ykknnps"]
+
+[ext_resource type="Script" path="res://Scripts/LevelData.gd" id="1_7wjbl"]
+
+[resource]
+script = ExtResource("1_7wjbl")
+waves = Array[Resource("res://Scripts/WaveData.gd")]([])

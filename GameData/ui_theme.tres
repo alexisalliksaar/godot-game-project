@@ -1,0 +1,19 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://c8msys5wcsou3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s2x24"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(1, 1, 1, 0.196078)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 10
+
+[resource]
+GridContainer/constants/h_separation = 0
+GridContainer/constants/v_separation = 0
+Panel/styles/panel = SubResource("StyleBoxFlat_s2x24")
+VBoxContainer/constants/separation = 20
